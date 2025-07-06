@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Validator - Free Tools</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/proxy.png">
+    <meta name="description" content="Check your proxies in a secure, faster and easier way using ProxyValidator.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./des/style.css" type="text/css">
+
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <a href="../" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back Home
+    </a>
+
+    <div class="container">
+        <div class="main-content">
+            <header class="header">
+                <h1 class="main-title">Proxy Validator</h1>
+                <p class="subtitle">Proxy validation with real-time testing and comprehensive analytics.</p>
+            </header>
+
+            <div class="glass-card">
+                <div class="input-group">
+                    <label for="proxyFormat" class="input-label">
+                        <i class="fas fa-list-ul"></i>
+                        Select Proxy Format
+                    </label>
+                    <select id="proxyFormat">
+                        <option value="1">IP:Port</option>
+                        <option value="2">IP:Port:Username:Password</option>
+                        <option value="3">Protocol://IP:Port</option>
+                        <option value="4">Username:Password@IP:Port</option>
+                        <option value="5">Protocol://Username:Password@IP:Port</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="proxies" class="input-label">
+                        <i class="fas fa-edit"></i>
+                        Enter Proxies (one per line)
+                    </label>
+                    <textarea id="proxies" placeholder="Enter your proxies here...&#10;Example:&#10;192.168.1.1:8080&#10;10.0.0.1:3128"></textarea>
+                </div>
+                
+                <button id="checkBtn" class="btn-primary">
+                    <i class="fas fa-play"></i>
+                    Start Validation
+                </button>
+            </div>
+
+            <div id="resultsSection" class="results-section">
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalProxies">0</div>
+                            <div class="stat-label">Total Proxies</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="validProxies">0</div>
+                            <div class="stat-label">Valid Proxies</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="avgResponse">0ms</div>
+                            <div class="stat-label">Avg Response Time</div>
+                        </div>
+                    </div>
+
+                    <div class="results-container" id="results"></div>
+                    
+                    <button id="downloadBtn" class="btn-primary">
+                        <i class="fas fa-download"></i>
+                        Download Working Proxies
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+        <script src="../notify/app.js"></script>
+    <script src=".././js/basic.func.js"></script>
+
+</body>
+</html>

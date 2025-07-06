@@ -1,0 +1,7 @@
+                            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6;">
+                                <p style="color: #6c757d; font-size: 12px; margin: 0;">
+                                    This message was sent anonymously through your message portal
+                                </p>
+                            </div>
+                        </div>
+                    </div>

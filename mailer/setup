@@ -1,0 +1,139 @@
+# Render.com Deployment Guide for volksgeistt Email Server
+
+## 📋 Pre-deployment Checklist
+
+1. **Files needed:**
+   - `server.js` (the main server file)
+   - `package.json` (dependencies and scripts)
+   - Make sure your Resend API key is ready
+
+## 🚀 Step-by-Step Deployment
+
+### 1. Prepare Your Repository
+- Create a new GitHub repository
+- Upload the `server.js` and `package.json` files
+- Commit and push to GitHub
+
+### 2. Deploy on Render.com
+
+1. **Sign up/Login to Render.com**
+   - Go to https://render.com
+   - Sign up or login with GitHub
+
+2. **Create New Web Service**
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+   - Select the repository with your server files
+
+3. **Configure Deployment Settings**
+   ```
+   Name: volksgeistt-email-server (or your preferred name)
+   Environment: Node
+   Build Command: npm install
+   Start Command: npm start
+   ```
+
+4. **Set Environment Variables**
+   - Go to "Environment" tab
+   - Add these variables:
+     ```
+     RESEND_API_KEY=re_uDQbrNYP_FJyWgsbJsQHoaZjon86tvv7P
+     NODE_ENV=production
+     ```
+
+5. **Deploy**
+   - Click "Create Web Service"
+   - Wait for deployment (usually 2-3 minutes)
+
+### 3. Update Frontend
+
+After deployment, Render will give you a URL like:
+`https://volksgeistt-email-server.onrender.com`
+
+**Update the frontend HTML:**
+- Replace `API_URL` with your actual Render URL
+- Example: `const API_URL = 'https://volksgeistt-email-server.onrender.com';`
+
+## 🔧 Important Notes
+
+### Security Considerations
+- **Never commit API keys to GitHub**
+- Use Render's environment variables for sensitive data
+- Consider restricting CORS origins in production
+
+### Free Tier Limitations
+- Render free tier spins down after 15 minutes of inactivity
+- First request after spin-down takes ~30 seconds
+- For production, consider upgrading to paid plan
+
+### Domain Setup (Optional)
+- You can add a custom domain in Render dashboard
+- Update DNS records as instructed by Render
+
+## 🧪 Testing Your Deployment
+
+### 1. Health Check
+Visit your Render URL directly:
+```
+https://your-app-name.onrender.com
+```
+Should return: `{"status":"Server is running!"}`
+
+### 2. Test Email Sending
+Use curl or Postman:
+```bash
+curl -X POST https://your-app-name.onrender.com \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com"}'
+```
+
+### 3. Test with Frontend
+- Update the `API_URL` in your HTML
+- Open the HTML file in browser
+- Try subscribing with a real email
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+1. **Build Failed**
+   - Check `package.json` syntax
+   - Ensure all dependencies are listed
+
+2. **Server Won't Start**
+   - Check server logs in Render dashboard
+   - Verify start command is correct
+
+3. **CORS Errors**
+   - Check CORS configuration in server
+   - Ensure frontend URL is allowed
+
+4. **Email Not Sending**
+   - Verify Resend API key in environment variables
+   - Check server logs for specific errors
+   - Ensure domain is verified in Resend dashboard
+
+### Logs and Monitoring
+- View logs in Render dashboard under "Logs" tab
+- Monitor performance in "Metrics" tab
+
+## 📝 Next Steps
+
+1. **Custom Domain:** Add your own domain for branding
+2. **SSL Certificate:** Render provides automatic HTTPS
+3. **Monitoring:** Set up health checks and alerts
+4. **Scaling:** Upgrade to paid plan for better performance
+
+## 🔄 Updates and Maintenance
+
+- Push changes to GitHub to auto-deploy
+- Monitor server health regularly
+- Keep dependencies updated
+- Backup important configurations
+
+---
+
+**Need Help?** 
+- Check Render documentation: https://render.com/docs
+- Resend API docs: https://resend.com/docs
+- GitHub repository setup: https://docs.github.com

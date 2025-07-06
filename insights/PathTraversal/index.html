@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Path Traversal Guide">
+<meta name="application-name" content="Path Traversal Guide">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="description" content="Complete beginner's guide to Path Traversal vulnerabilities">
+<meta name="author" content="Ujjawal Singh">
+<meta property="og:title" content="Path Traversal: A Beginner's Guide">
+<meta property="og:description" content="Learn about Path Traversal vulnerabilities with practical examples">
+<meta property="og:type" content="article">
+<title>Path Traversal: A Beginner's Guide - Ujjawal Singh</title>
+<link rel="icon" href="../../images/patht.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="./des/style.css" type="text/css">
+
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <a href="../index.html" class="back-home" role="button" tabindex="0">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Back to Insights
+    </a>
+
+    <div class="container">
+        <header class="article-header fade-in">
+            <h1>Path Traversal</h1>
+            <div class="article-meta">
+                <span>
+                    <i class="fas fa-calendar-alt"></i>
+                    June 21, 2025
+                </span>
+                <span>
+                    <i class="fas fa-clock"></i>
+                    10 min read
+                </span>
+                <span>
+                    <i class="fas fa-user"></i>
+                    Ujjawal Singh
+                </span>
+            </div>
+            <p class="article-description">
+                Learn about Path Traversal vulnerabilities, how they work, and see practical examples with Python code.
+            </p>
+        </header>
+
+        <article class="article-content fade-in stagger-1">
+            <h2 class="section-title">What is Path Traversal?</h2>
+            <p>
+                Path Traversal (also known as Directory Traversal) is a web security vulnerability that allows attackers to access files and directories outside of the intended directory structure. Think of it as finding a way to "escape" from a restricted folder and access sensitive files on a server.
+            </p>
+            
+            <p>
+                Imagine you're in a library where you're only supposed to access books in the "Public" section, but you find a way to sneak into the "Staff Only" area. That's essentially what path traversal does in the digital world.
+            </p>
+
+            <h2 class="section-title">How Does It Work?</h2>
+            <p>
+                Web applications often use file paths to serve content. For example, a website might serve files like this:
+            </p>
+            
+            <div class="code-block">
+                <pre><code>https://example.com/files/document.pdf
+https://example.com/images/photo.jpg</code></pre>
+            </div>
+
+            <p>
+                Path traversal attacks use special characters and sequences like <span class="inline-code">../</span> (dot-dot-slash) to navigate up directory levels and access files they shouldn't be able to reach.
+            </p>
+
+            <div class="highlight-box">
+                <h4>Key Concept</h4>
+                <p>The <span class="inline-code">../</span> sequence means "go up one directory level" in most file systems. By chaining multiple <span class="inline-code">../</span> sequences, attackers can traverse up the directory tree to access sensitive files.</p>
+            </div>
+
+            <h2 class="section-title">Common Attack Patterns</h2>
+            <p>Here are some typical path traversal payloads that attackers use:</p>
+            
+            <div class="code-block">
+                <pre><code># Basic traversal
+../../../etc/passwd
+
+# URL encoded
+..%2F..%2F..%2Fetc%2Fpasswd
+
+# Double URL encoded
+..%252F..%252F..%252Fetc%252Fpasswd
+
+# Using backslashes (Windows)
+..\..\..\windows\system32\config\sam</code></pre>
+            </div>
+
+            <h2 class="section-title">Practical Example: Python Script</h2>
+            <p>
+                Let's look at a practical example that demonstrates how path traversal testing works. The following Python script tests various file paths on a web application:
+            </p>
+
+            <div class="code-block">
+                <pre><code># sending requests to the web
+import requests
+
+web = "https://proxy-validator.netlify.app/"
+
+payloads = [
+    "/script.js",
+    "/index.html",
+    "/style.css",
+    "/about.html"
+]
+
+for payload in payloads:
+    url = web + payload # eg : https://proxy-validator.netlify.app/script.js
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        print(f"successfully accessed the {url}")
+        print(response.text)
+    else:
+        print("denied")</code></pre>
+            </div>
+
+            <h2 class="section-title">Code Breakdown</h2>
+            
+            <p><span class="inline-code">import requests</span> - This imports the Python requests library, which makes it easy to send HTTP requests to web servers.</p>
+            
+            <p><span class="inline-code">web = "https://proxy-validator.netlify.app/"</span> - This sets our target website. We're testing a legitimate site for demonstration purposes.</p>
+            
+            <p><span class="inline-code">payloads = [...]</span> - This list contains different file paths we want to test. In a real path traversal test, these might include:</p>
+            
+            <div class="code-block">
+                <pre><code># More realistic path traversal payloads
+payloads = [
+    "/../../../etc/passwd",
+    "/../../windows/system32/drivers/etc/hosts",
+    "/../config/database.yml",
+    "/../../app/config/database.php"
+]</code></pre>
+            </div>
+            
+            <p><span class="inline-code">for payload in payloads:</span> - This loop goes through each payload in our list.</p>
+            
+            <p><span class="inline-code">url = web + payload</span> - This combines the base URL with each payload to create the full URL we're testing.</p>
+            
+            <p><span class="inline-code">response = requests.get(url)</span> - This sends a GET request to the constructed URL.</p>
+            
+            <p><span class="inline-code">if response.status_code == 200:</span> - This checks if the request was successful (HTTP 200 means "OK").</p>
+
+            <div class="highlight-box">
+                <h4>What This Script Does</h4>
+                <p>This script systematically tests different file paths to see which ones the web server will serve. If a file returns a 200 status code, it means the server successfully served the file, which could indicate a path traversal vulnerability if sensitive files are accessible.</p>
+            </div>
+
+            <h2 class="section-title">Real-World Impact</h2>
+            <p>Path traversal vulnerabilities can lead to serious security breaches:</p>
+            
+            <ul>
+                <li><strong>Data Theft:</strong> Attackers can access sensitive files like configuration files, databases, or user data</li>
+                <li><strong>System Information Disclosure:</strong> Files like <span class="inline-code">/etc/passwd</span> on Linux systems can reveal user accounts</li>
+                <li><strong>Application Source Code Exposure:</strong> Attackers might access the application's source code, revealing other vulnerabilities</li>
+                <li><strong>Credential Theft:</strong> Configuration files often contain database passwords and API keys</li>
+            </ul>
+
+            <h2 class="section-title">Prevention Techniques</h2>
+            <p>Here are key ways developers can prevent path traversal attacks:</p>
+            
+            <ul>
+                <li><strong>Input Validation:</strong> Validate and sanitize all user inputs, especially file paths</li>
+                <li><strong>Whitelist Approach:</strong> Only allow access to specific files or directories</li>
+                <li><strong>Path Canonicalization:</strong> Convert file paths to their absolute form and check if they're within allowed directories</li>
+                <li><strong>Avoid User Input in File Operations:</strong> Don't directly use user input to construct file paths</li>
+                <li><strong>Use Security Libraries:</strong> Leverage built-in security functions provided by your programming language or framework</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Ethical Reminder</h4>
+                <p>Always test path traversal vulnerabilities only on systems you own or have explicit permission to test. Unauthorized testing is illegal and unethical. Use this knowledge to secure your own applications and systems.</p>
+            </div>
+
+            <h2 class="section-title">Testing Your Knowledge</h2>
+            <p>
+                To better understand path traversal, try setting up a simple local web server and experiment with different file paths. You can use Python's built-in HTTP server or create a simple Flask application to practice secure file serving.
+            </p>
+
+            <p>
+                Remember, the goal is to learn how these vulnerabilities work so you can better protect against them in your own applications.
+            </p>
+
+            <div class="highlight-box">
+                <h4>Next Steps</h4>
+                <p>Now that you understand path traversal basics, consider learning about other web security topics like SQL injection, cross-site scripting (XSS), and secure coding practices. Building a strong foundation in web security will make you a better developer and security professional.</p>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <p>Want to learn more about cybersecurity? Let's connect!</p>
+            <div class="social-links" role="navigation" aria-label="Social media links">
+                <a href="https://github.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub" aria-label="Visit my GitHub profile">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram" aria-label="Visit my Instagram profile">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://discord.com/users/1181256087081603116" target="_blank" rel="noopener noreferrer" class="social-link" title="Discord" aria-label="Contact me on Discord">
+                    <i class="fab fa-discord" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter" aria-label="Follow me on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:exrmaniac@gmail.com" class="social-link" title="Email" aria-label="Send me an email">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/script.js"> </script>
+    <script src="../../js/basic.func.js"> </script>
+    <script src="../../notify/app.js"> </script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="Ujjawal Singh (Volksgeist) - Backend Developer, Programmer, Cybersecurity Enthusiast">
+<meta name="author" content="Ujjawal Singh">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../xyz.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Ujjawal Singh</title>
+<link rel="icon" href="./images/code.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="des/style.css" type="text/css">
+
+</head>
+<body>
+    <div class="neural-background">
+        <canvas class="neural-canvas" id="neuralCanvas"></canvas>
+        <div class="grid-overlay"></div>
+        <div class="scan-line"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="./" class="navbar-brand">— Ujjawal Singh</a>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li>
+                    <a href="./eastereggtypeshyt/" class="nav-link easter-egg">Easter Egg?</a>
+                </li>
+                <li>
+                    <a href="./aboutme/" class="nav-link easter-egg">About Me?</a>
+                </li>
+                <li>
+                    <a href="./insights/" class="nav-link easter-egg">Insights?</a>
+                </li> 
+                <li>
+                    <a href="./playlists/" class="nav-link easter-egg">Playlist?</a>
+                </li>
+                <li>
+                    <a href="./tools/" class="nav-link easter-egg">Tools?</a>
+                </li>
+                <li>
+                    <a href="./ngl/" class="nav-link easter-egg">NGL?</a>
+                </li>
+
+            </ul>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+
+  <div class="profile-container" id="profileContainer">
+    <img class="avatar-img" id="avatar" src="" alt="Profile Picture" />
+    <div class="status-circle" id="statusCircle"></div>
+  </div>
+
+
+
+  <div class="username" id="username">Loading...
+    <div class="platform-icons" id="platformIcons"></div>
+
+  </div>
+  <div class="activity-status" id="activityStatus">Loading...</div>
+  <div class="get-ig">
+          Created by volksgeistt — Live Discord presence.
+<br>
+    Connect with me through <a href="mailto:exrmaniac@gmail.com" target="_blank">mail</a><br>
+    Know more <a href="./aboutme/" target="_blank">about me?</a>
+
+  </div>
+
+  <div class="social-media-buttons">
+  <a href="https://github.com/volksgeistt" target="_blank" class="social-btn github" title="GitHub">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://www.instagram.com/volksgeistt" target="_blank" class="social-btn instagram" title="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://discord.com/users/1181256087081603116" target="_blank" class="social-btn discord" title="Discord">
+    <i class="fab fa-discord"></i>
+  </a>
+  <a href="https://twitter.com/volksgeistt" target="_blank" class="social-btn twitter" title="Twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://t.me/exrmaniac" target="_blank" class="social-btn twitter" title="Twitter">
+    <i class="fab fa-telegram"></i>
+  </a>
+
+</div>
+  <div class="footer">surviving on caffeine & contradictions.</div>
+
+<div id="uptime">last deployment : 0d 0h 0m 0s</div>
+
+<div class="tech-stack-container">
+  <a href="./techstack/" class="tech-stack-btn" title="Explore My Tech Stack">
+    <i class="fas fa-code tech-icon"></i>
+    <span class="btn-text">View Tech Stack</span>
+  </a>
+</div>
+
+<div class="tech-stack-container">
+  <a href="./projects/" class="tech-stack-btn" title="Explore My Tech Stack">
+    <i class="fas fa-gear"></i>
+    <span class="btn-text">View Projects</span>
+  </a>
+</div>
+
+
+  <button class="avatar-button" onclick="toggleAvatarFrame()" title="View Avatar History">
+    <i class="fa-regular fa-image"></i>
+  </button>
+  
+  <div class="avatar-frame" id="avatarFrame">
+    <p style="color: white; font-size: 0.9rem; margin-bottom: 10px;" id="avatarCount">Loading avatars...</p>
+    <div id="avatarImages" style="display: flex; flex-wrap: wrap;"></div>
+  </div>
+  
+  <div id="loadingScreen">
+    <div class="loader"></div>
+    <div class="loading-text">fetching info & status...</div>
+  </div>
+
+    <button class="audio-control" id="audioControl" title="Toggle Background Music" aria-label="Toggle Background Music">
+        <i class="fas fa-volume-up audio-icon" id="audioIcon"></i>
+    </button>
+
+    <audio id="backgroundAudio" preload="auto" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        <source src="song.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="./js/redirects.js"></script>
+    <script src="./js/nav.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/deployment.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="./js/basic.func.js"></script>
+<script src="./notify/app.js"></script>
+<script src="./js/player.js"></script>
+
+
+</body>
+</html>

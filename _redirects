@@ -1,0 +1,20 @@
+
+/github /index.html 200
+/ig /index.html 200
+/instagram /index.html 200
+/discord /index.html 200
+/twitter /index.html 200
+/x /index.html 200
+/telegram /index.html 200
+/tg /index.html 200
+/mail /index.html 200
+/email /index.html 200
+/linkedin /index.html 200
+/resume /index.html 200
+/cv /index.html 200
+/tech /index.html 200
+/easter /index.html 200
+/easteregg /index.html 200
+
+# Fallback for any other unknown paths
+/* /index.html 200

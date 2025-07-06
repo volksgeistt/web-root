@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Web Scanning Guide">
+<meta name="application-name" content="Web Scanning Guide">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="description" content="Complete beginner's guide to Web Scanning techniques and tools">
+<meta name="author" content="Ujjawal Singh">
+<meta property="og:title" content="Web Scanning: A Beginner's Guide">
+<meta property="og:description" content="Learn about Web Scanning with practical examples using Python">
+<meta property="og:type" content="article">
+<title>Web Scanning - Ujjawal Singh</title>
+<link rel="icon" href="../../images/web.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="./des/style.css" type="text/css">
+
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <a href="../index.html  " class="back-home" role="button" tabindex="0">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Back to Insights
+    </a>
+
+    <div class="container">
+        <header class="article-header fade-in">
+            <h1>Web Scanning</h1>
+            <div class="article-meta">
+                <span>
+                    <i class="fas fa-calendar-alt"></i>
+                    June 21, 2025
+                </span>
+                <span>
+                    <i class="fas fa-clock"></i>
+                    20 min read
+                </span>
+                <span>
+                    <i class="fas fa-user"></i>
+                    Ujjawal Singh
+                </span>
+            </div>
+            <p class="article-description">
+                Master the art of web scanning with comprehensive techniques, practical Python examples, and my advanced webscanner tool.
+            </p>
+        </header>
+
+        <article class="article-content fade-in stagger-1">
+            <h2 class="section-title">What is Web Scanning?</h2>
+            <p>
+                Web scanning is the process of systematically analyzing websites and web applications to gather information about their structure, technologies, security configurations, and potential vulnerabilities. Think of it as performing a comprehensive health check on a website - you're examining every aspect to understand how it works and identify areas of concern.
+            </p>
+            
+            <p>
+                Imagine you're a security consultant hired to assess a building's security. You'd check the doors, windows, alarm systems, and identify any weak points. Web scanning does the same thing for websites - it examines servers, ports, SSL certificates, and web technologies to create a complete security profile.
+            </p>
+
+            <h2 class="section-title">Why is Web Scanning Important?</h2>
+            <p>
+                Web scanning serves multiple critical purposes in cybersecurity and web development:
+            </p>
+            
+            <ul>
+                <li><strong>Security Assessment:</strong> Identify vulnerabilities before attackers do</li>
+                <li><strong>Compliance Checking:</strong> Ensure websites meet security standards and regulations</li>
+                <li><strong>Asset Discovery:</strong> Map out all services and technologies in use</li>
+                <li><strong>Performance Analysis:</strong> Understand how websites are structured and optimized</li>
+                <li><strong>Penetration Testing:</strong> Essential first step in ethical hacking assessments</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Key Concept</h4>
+                <p>Web scanning is like reconnaissance in military operations - gathering intelligence before taking action. The more you know about your target, the better you can protect it or identify its weaknesses.</p>
+            </div>
+
+            <h2 class="section-title">Types of Web Scanning</h2>
+            <p>Web scanning encompasses several different techniques, each serving specific purposes:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">1. Port Scanning</h3>
+            <p>Port scanning identifies which network ports are open on a target server. This reveals what services are running and potentially accessible.</p>
+
+            <div class="code-block">
+                <pre><code># Common ports and their services
+Port 80  - HTTP (Web traffic)
+Port 443 - HTTPS (Secure web traffic)
+Port 22  - SSH (Secure Shell)
+Port 21  - FTP (File Transfer Protocol)
+Port 25  - SMTP (Email)
+Port 53  - DNS (Domain Name System)</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">2. SSL/TLS Certificate Analysis</h3>
+            <p>Examining SSL certificates reveals encryption strength, validity periods, and certificate authorities. This is crucial for identifying weak encryption or expired certificates.</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">3. Web Technology Detection</h3>
+            <p>Identifying the technologies powering a website - frameworks, content management systems, server software, and programming languages used.</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">4. Directory and File Discovery</h3>
+            <p>Finding hidden directories, backup files, configuration files, and other resources that might not be linked from the main website.</p>
+
+            <h2 class="section-title">Introducing the Advanced Web Scanner</h2>
+            <p>
+                I've developed a comprehensive Python-based web scanning tool that combines multiple scanning techniques into one powerful package. Let's explore how it works and what makes it special.
+            </p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Installation and Setup</h3>
+            <p>Getting started with the web scanner is straightforward:</p>
+
+            <div class="code-block bash">
+                <pre><code># Clone the repository
+git clone https://github.com/volksgeistt/webscanner
+cd webscanner
+
+# Install required dependencies
+pip install -r requirements.txt
+
+# Verify installation
+python scanner.py --help</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Core Features</h3>
+            <p>The scanner includes several powerful features:</p>
+
+            <ul>
+                <li><strong>Website Information Extraction:</strong> Analyzes HTML content, metadata, and page structure</li>
+                <li><strong>Domain Intelligence:</strong> Retrieves WHOIS data and DNS information</li>
+                <li><strong>SSL Certificate Validation:</strong> Checks certificate validity and security configurations</li>
+                <li><strong>Port Scanning:</strong> Identifies open ports and running services</li>
+                <li><strong>Security Vulnerability Checks:</strong> Tests for common security misconfigurations</li>
+                <li><strong>Network Traceroute:</strong> Maps the network path to the target</li>
+            </ul>
+
+            <h2 class="section-title">Practical Examples</h2>
+            <p>Let's look at practical examples of how to use the web scanner for different scenarios:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Basic Website Scan</h3>
+            <p>Start with a simple scan to gather basic information about a website:</p>
+
+            <div class="code-block bash">
+                <pre><code># Basic scan
+python scanner.py http://example.com
+
+# This will provide:
+# - Website title and meta information
+# - Basic page structure analysis
+# - Server information
+# - SSL certificate status</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Comprehensive Security Scan</h3>
+            <p>For a thorough security assessment, enable all scanning features:</p>
+
+            <div class="code-block bash">
+                <pre><code># Full security scan with all features
+python scanner.py http://example.com --all --output security_report.json
+
+# Equivalent to:
+python scanner.py http://example.com \
+  --port-scan \
+  --security-check \
+  --traceroute \
+  --output security_report.json</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Targeted Port Scanning</h3>
+            <p>Focus specifically on port scanning to identify running services:</p>
+
+            <div class="code-block bash">
+                <pre><code># Port scan with verbose output
+python scanner.py http://example.com --port-scan --verbose
+
+# Custom timeout for slow networks
+python scanner.py http://example.com --port-scan --timeout 30</code></pre>
+            </div>
+
+            <h2 class="section-title">Understanding the Output</h2>
+            <p>The scanner generates comprehensive JSON reports. Here's what a typical output looks like:</p>
+
+            <div class="code-block json">
+                <pre><code>{
+  "scan_metadata": {
+    "target": "http://example.com",
+    "domain": "example.com",
+    "scan_time": "2025-06-21 12:00:00",
+    "scanner_version": "2.0"
+  },
+  "website_info": {
+    "title": "Example Domain",
+    "meta_description": "This domain is for illustrative examples",
+    "page_elements": {
+      "links": 15,
+      "images": 5,
+      "scripts": 10,
+      "stylesheets": 3
+    },
+    "technologies": ["Apache", "PHP", "MySQL"]
+  },
+  "ssl_info": {
+    "issuer": "Let's Encrypt",
+    "valid_until": "2025-12-31",
+    "status": "Valid",
+    "cipher_suite": "TLS_AES_256_GCM_SHA384"
+  },
+  "port_scan": {
+    "open_ports": {
+      "80": {
+        "status": "open",
+        "service": "http",
+        "banner": "Apache/2.4.41"
+      },
+      "443": {
+        "status": "open",
+        "service": "https",
+        "banner": "Apache/2.4.41"
+      }
+    }
+  },
+  "domain_info": {
+    "whois": {
+      "registrar": "Example Registrar",
+      "creation_date": "2020-01-01",
+      "expiration_date": "2025-01-01",
+      "name_servers": ["ns1.example.com", "ns2.example.com"]
+    }
+  },
+  "security_check": {
+    "vulnerabilities": [],
+    "warnings": ["Server version disclosure detected"],
+    "passed_tests": [
+      {
+        "name": "HTTPS Availability",
+        "details": "HTTPS is properly configured"
+      },
+      {
+        "name": "SSL Certificate Validation",
+        "details": "Certificate is valid and properly configured"
+      }
+    ]
+  },
+  "traceroute": {
+    "hops": [
+      {
+        "hop": 1,
+        "ip": "192.168.1.1",
+        "rtt": 10.5
+      },
+      {
+        "hop": 2,
+        "ip": "203.0.113.1",
+        "rtt": 20.3
+      }
+    ]
+  }
+}</code></pre>
+            </div>
+
+            <h2 class="section-title">Advanced Scanning Techniques</h2>
+            <p>The web scanner includes several advanced features that set it apart from basic scanning tools:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Intelligent Technology Detection</h3>
+            <p>The scanner analyzes HTTP headers, page content, and file extensions to identify the technology stack powering a website. This includes:</p>
+
+            <ul>
+                <li>Web servers (Apache, Nginx, IIS)</li>
+                <li>Programming languages (PHP, Python, JavaScript)</li>
+                <li>Content Management Systems (WordPress, Drupal, Joomla)</li>
+                <li>Frameworks (Laravel, Django, React)</li>
+                <li>Database systems (MySQL, PostgreSQL, MongoDB)</li>
+            </ul>
+
+            <div class="code-block">
+                <pre><code># Example of technology detection output
+"technologies": {
+  "web_server": "Apache/2.4.41",
+  "programming_language": "PHP/7.4.3",
+  "cms": "WordPress 6.2",
+  "framework": "Laravel 9.0",
+  "database": "MySQL 8.0"
+}</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Comprehensive SSL Analysis</h3>
+            <p>SSL certificate analysis goes beyond basic validation to provide detailed security insights:</p>
+
+            <div class="code-block">
+                <pre><code># Advanced SSL analysis features
+python scanner.py https://example.com --ssl-detailed
+
+# Checks performed:
+# - Certificate chain validation
+# - Cipher suite strength analysis
+# - Protocol version support
+# - Certificate transparency logs
+# - OCSP stapling verification</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Network Path Analysis</h3>
+            <p>The traceroute feature provides valuable network intelligence by mapping the path packets take to reach the target:</p>
+
+            <div class="code-block">
+                <pre><code># Traceroute with geographic information
+python scanner.py http://example.com --traceroute --geo-location
+
+# Provides:
+# - Hop-by-hop network path
+# - Response times for each hop
+# - Geographic location of network nodes
+# - ISP and organization information</code></pre>
+            </div>
+
+            <h2 class="section-title">Security Vulnerability Detection</h2>
+            <p>The scanner includes built-in security checks that identify common vulnerabilities and misconfigurations:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Common Security Checks</h3>
+            <ul>
+                <li><strong>HTTP to HTTPS redirection:</strong> Ensures secure communication</li>
+                <li><strong>Security headers analysis:</strong> Checks for HSTS, CSP, X-Frame-Options</li>
+                <li><strong>Server information disclosure:</strong> Identifies overly verbose server headers</li>
+                <li><strong>Directory traversal attempts:</strong> Tests for path traversal vulnerabilities</li>
+                <li><strong>Common file exposure:</strong> Checks for exposed configuration files</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Legal and Ethical Considerations</h4>
+                <p>Always ensure you have proper authorization before scanning any website or network. Unauthorized scanning can be illegal and unethical. Use this tool responsibly and only on systems you own or have explicit permission to test.</p>
+            </div>
+
+            <h2 class="section-title">Customizing Your Scans</h2>
+            <p>The scanner offers extensive customization options to tailor scans to your specific needs:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Custom Port Ranges</h3>
+            <div class="code-block bash">
+                <pre><code># Scan specific port ranges
+python scanner.py http://example.com --port-range 1-1024
+
+# Scan common ports only
+python scanner.py http://example.com --common-ports
+
+# Scan specific ports
+python scanner.py http://example.com --ports 80,443,8080,8443</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Output Formats and Reporting</h3>
+            <div class="code-block bash">
+                <pre><code># Generate different report formats
+python scanner.py http://example.com --format json --output report.json
+python scanner.py http://example.com --format csv --output report.csv
+python scanner.py http://example.com --format html --output report.html
+
+# Enable detailed logging
+python scanner.py http://example.com --verbose --log-file scan.log</code></pre>
+            </div>
+
+            <h2 class="section-title">Performance Optimization</h2>
+            <p>For large-scale scanning operations, the tool includes several performance optimization features:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Concurrent Scanning</h3>
+            <div class="code-block">
+                <pre><code># Enable multi-threading for faster scans
+python scanner.py http://example.com --threads 10 --all
+
+# Adjust timeout for slow networks
+python scanner.py http://example.com --timeout 30 --retries 3</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Rate Limiting</h3>
+            <div class="code-block">
+                <pre><code># Implement rate limiting to avoid overwhelming targets
+python scanner.py http://example.com --rate-limit 10 --delay 1
+
+# Stealth mode with random delays
+python scanner.py http://example.com --stealth --random-delay</code></pre>
+            </div>
+
+            <h2 class="section-title">Integration and Automation</h2>
+            <p>The scanner is designed to integrate seamlessly into automated security workflows:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">API Integration</h3>
+            <div class="code-block">
+                <pre><code># Python API usage example
+from webscanner import Scanner
+
+# Initialize scanner
+scanner = Scanner()
+
+# Perform scan
+results = scanner.scan('http://example.com', 
+                      port_scan=True, 
+                      security_check=True)
+
+# Process results
+for vulnerability in results.security_check.vulnerabilities:
+    print(f"Vulnerability found: {vulnerability.name}")
+    print(f"Severity: {vulnerability.severity}")
+    print(f"Description: {vulnerability.description}")
+</code></pre>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">CI/CD Integration</h3>
+            <div class="code-block bash">
+                <pre><code># Example GitHub Actions workflow
+name: Security Scan
+on: [push, pull_request]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Web Scanner
+        run: |
+          pip install -r requirements.txt
+          python scanner.py ${{ secrets.TARGET_URL }} --all --output security-report.json
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: security-report
+          path: security-report.json</code></pre>
+            </div>
+
+            <h2 class="section-title">Best Practices and Tips</h2>
+            <p>To get the most out of web scanning, follow these best practices:</p>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Scanning Strategy</h3>
+            <ul>
+                <li><strong>Start with passive reconnaissance:</strong> Gather publicly available information first</li>
+                <li><strong>Progress to active scanning:</strong> Use port scans and vulnerability checks</li>
+                <li><strong>Document everything:</strong> Keep detailed records of your findings</li>
+                <li><strong>Validate results:</strong> Manually verify automated findings</li>
+                <li><strong>Regular scanning:</strong> Schedule periodic scans to catch new vulnerabilities</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>Pro Tip</h4>
+                <p>Combine web scanning with other security tools like vulnerability scanners, SIEM systems, and penetration testing frameworks for comprehensive security assessments.</p>
+            </div>
+
+            <h3 style="color: #c084fc; margin: 1.5rem 0 1rem 0; font-size: 1.3rem;">Common Pitfalls to Avoid</h3>
+            <ul>
+                <li><strong>Scanning without permission:</strong> Always get authorization first</li>
+                <li><strong>Ignoring false positives:</strong> Verify findings manually</li>
+                <li><strong>Over-aggressive scanning:</strong> Respect rate limits and server resources</li>
+                <li><strong>Incomplete documentation:</strong> Record all findings and methodologies</li>
+                <li><strong>Ignoring context:</strong> Consider the business impact of vulnerabilities</li>
+            </ul>
+
+            <h2 class="section-title">Future Enhancements</h2>
+            <p>The web scanner is continuously evolving with planned enhancements including:</p>
+
+            <ul>
+                <li><strong>Machine Learning Integration:</strong> AI-powered vulnerability detection</li>
+                <li><strong>API Security Testing:</strong> Specialized checks for REST and GraphQL APIs</li>
+                <li><strong>Cloud Security Assessment:</strong> AWS, Azure, and GCP security scanning</li>
+                <li><strong>Mobile Web Testing:</strong> Responsive design and mobile-specific security checks</li>
+                <li><strong>Compliance Reporting:</strong> GDPR, HIPAA, and PCI-DSS compliance checking</li>
+            </ul>
+
+            <h2 class="section-title">Conclusion</h2>
+            <p>
+                Web scanning is an essential skill for anyone involved in cybersecurity, web development, or IT operations. The comprehensive web scanner tool provides a powerful, flexible platform for conducting thorough security assessments while maintaining ethical standards.
+            </p>
+            
+            <p>
+                By combining multiple scanning techniques into a single tool, you can efficiently gather intelligence about web applications, identify potential security issues, and ensure your digital assets are properly protected. Remember to always use these tools responsibly and in accordance with applicable laws and regulations.
+            </p>
+
+            <p>
+                Whether you're a security professional conducting penetration tests, a developer ensuring your applications are secure, or a system administrator monitoring your infrastructure, mastering web scanning techniques will significantly enhance your cybersecurity capabilities.
+            </p>
+
+            <div class="highlight-box">
+                <h4>Getting Started</h4>
+                <p>Ready to start your web scanning journey? Clone the repository from <a href="https://github.com/volksgeistt/webscanner" style="color: #8b5cf6; text-decoration: none;">GitHub</a> and begin exploring the powerful features of this comprehensive scanning tool.</p>
+            </div>
+        </article>
+
+        <footer class="footer fade-in stagger-3">
+            <p>Want to learn more about cybersecurity? Let's connect!</p>
+            <div class="social-links">
+                <a href="https://github.com/volksgeistt" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/ujjawal-singh" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com/volksgeistt" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:ujjawal@example.com" class="social-link" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="../../notify/app.js"></script>
+    <script src="../../js/basic.func.js"></script>
+
+</body>
+</html>
