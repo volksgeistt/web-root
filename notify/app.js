@@ -1,4 +1,4 @@
-const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1385332713707540510/qieZjWAQwHkSlN3eJ2IAkliCzLPX8Nkgjb9QcnrsmNXDcKNAo9nf4QfnNxZerxZf1yM3'; 
+const DISCORD_WEBHOOK_URL = ''; 
 
 function getDeviceType() {
     const userAgent = navigator.userAgent.toLowerCase();
