@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Anonymous Messages">
+    <meta name="application-name" content="Anonymous Messages">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="description" content="Send anonymous messages to Ujjawal Singh (Volksgeist) - Share your thoughts anonymously">
+    <meta name="author" content="Ujjawal Singh">
+    <meta property="og:title" content="Send Anonymous Message - Ujjawal Singh">
+    <meta property="og:description" content="Send anonymous messages securely and privately">
+    <meta property="og:type" content="website">
+    <title>NGL - Ujjawal Singh</title>
+    <link rel="icon" href="../images/nglimg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./des/style.css" type="text/css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <a href="../index.html" class="back-home" role="button" tabindex="0">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        Back to Home
+    </a>
+
+    <div class="container">
+        <header class="header fade-in">
+            <h1>
+                <i class="fas fa-user-secret" style="margin-right: 0.5rem; font-size: 0.8em;"></i>
+                NGL  Messages
+            </h1>
+            <p>Send your thoughts anonymously and securely</p>
+        </header>
+
+        <section class="message-form-section fade-in stagger-1">
+            <h2 class="form-title">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                Your Message
+            </h2>
+            <form id="messageForm" class="form-container">
+                <div class="input-group">
+                    <textarea 
+                        id="message" 
+                        placeholder="Type your anonymous message here... Share your thoughts, feedback, or anything you'd like to say!"
+                        required
+                        maxlength="650"
+                    ></textarea>
+                    <i class="fas fa-pen input-icon" aria-hidden="true"></i>
+                </div>
+                
+                <div class="char-counter" id="charCounter">0 / 650 characters</div>
+                
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                    Send Message
+                </button>
+            </form>
+            
+            <div id="messageStatus" class="message-status"></div>
+        </section>
+
+    <footer class="footer">
+        <p>Want to collaborate on a project? Let's connect!</p>
+        <div class="social-links" role="navigation" aria-label="Social media links">
+            <a href="https://github.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub" aria-label="Visit my GitHub profile">
+                <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram" aria-label="Visit my Instagram profile">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://discord.com/users/1181256087081603116" target="_blank" rel="noopener noreferrer" class="social-link" title="Discord" aria-label="Contact me on Discord">
+                <i class="fab fa-discord" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/volksgeistt" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter" aria-label="Follow me on Twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:exrmaniac@gmail.com" class="social-link" title="Email" aria-label="Send me an email">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"> </script>
+        <script src="../notify/app.js"></script>
+        <script src="../js/basic.func.js"></script>
+
+</body>
+</html>
